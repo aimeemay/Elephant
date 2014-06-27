@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>I Love Paul</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>
+		$( document ).ready(function() {
+	    	console.log( "ready!" );
+	    	var angle = 360
+	    	var sound = new Audio('squeak.mp3')
+			$('#elephant').click(function() {
+				sound.play();
+				$(this).css({
+					'-webkit-transform' : 'rotate('+angle+'deg)',
+					'transform' : 'rotate('+angle+'deg)'
+				})
+				angle += 360
+				// $(this).addClass('rotate');
+				// $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+				//     $('#elephant').removeClass('rotate');
+				//  });
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<img id='elephant' src="elephant.jpg"/>
+	</div>
+</body>
+</html>
