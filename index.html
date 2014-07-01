@@ -1,31 +1,96 @@
 <html>
 <head>
 	<title>I Love Paul</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		body {
+			background-color: #efefef
+		}
+		#elephant {
+			display: block;
+			margin: auto;
+			position: relative;
+			height: 300px;
+			width: 300px;
+			transition: all 0.5s ease-in-out;
+			/*to vertically align*/
+			position: relative;
+			top: 50%;
+			-webkit-transform: translateY(-50%) rotate(0deg);
+			transform: translateY(-50%) rotate(0deg);
+		}
+		#wrapper {
+			width:150px;
+			display:block;
+			margin:auto;
+			margin-top:350px;
+		}
+		#counter {
+			float:left;
+			color:#ababab;
+			padding-right:3%;
+			margin: 0px;
+			line-height: 50px;
+		}
+		#button {
+			height:50px;
+			width:100px;
+			float:left;
+			display:block;
+			margin: auto;
+			box-shadow:inset 0px 1px 0px 0px #ffffff;
+			background-color:#f9f9f9;
+			border-radius: 16px;
+			border:1px solid #dcdcdc;
+			color:#666666;
+			font-family:Trebuchet MS;
+			font-size:15px;
+			font-weight:bold;
+			line-height:50px;
+			text-align:center;
+			text-shadow:1px 1px 0px #ffffff;
+		}#button:hover {
+			background-color:#e9e9e9;
+		}#button:active {
+			position:relative;
+			top:1px;
+		}
+	</style>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>
-		$( document ).ready(function() {
-	    	console.log( "ready!" );
+		$(document).ready(function() {
 	    	var angle = 360
+	    	var counter = 0
 	    	var sound = new Audio('squeak.mp3')
 			$('#elephant').click(function() {
 				sound.play();
 				$(this).css({
-					'-webkit-transform' : 'rotate('+angle+'deg)',
-					'transform' : 'rotate('+angle+'deg)'
+					'-webkit-transform' : 'translateY(-50%) rotate('+angle+'deg) ',
+					'transform' : 'translateY(-50%) rotate('+angle+'deg)'
 				})
 				angle += 360
-				// $(this).addClass('rotate');
-				// $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-				//     $('#elephant').removeClass('rotate');
-				//  });
+				counter += 1
+				console.log(counter);
+				$('#counter').html(counter);
 			});
+			$('#button').click(function() {	
+				angle = 0
+				counter = 0
+				$('#elephant').css({
+					'-webkit-transform' : 'translateY(-50%) rotate('+angle+'deg) ',
+					'transform' : 'translateY(-50%) rotate('+angle+'deg)'
+				});
+				console.log(counter);
+				$('#counter').html(counter);
+			})
 		});
 	</script>
 </head>
 <body>
-	<div id="wrapper">
-		<img id='elephant' src="elephant.jpg"/>
+	<img id='elephant' src="elephant.jpg"/>
+	<div id='wrapper'>
+		<p id='counter'>0</p>
+		<a id='button'>UNWIND</a>
 	</div>
+
 </body>
 </html>
