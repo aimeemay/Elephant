@@ -2,12 +2,14 @@
 <head>
 	<title>I Love Paul</title>
 	<style>
-		body {
+		html, body {
 			background-color: #efefef
+			height: 100%
+			width: 100%;
 		}
 		#elephant {
 			display: block;
-			margin: auto;
+			margin: auto;f
 			position: relative;
 			height: 300px;
 			width: 300px;
@@ -22,7 +24,11 @@
 			width:150px;
 			display:block;
 			margin:auto;
-			margin-top:350px;
+			/*to vertically align*/
+			position: relative;
+			top: 75%;
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
 		}
 		#counter {
 			float:left;
