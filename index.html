@@ -3,32 +3,30 @@
 	<title>I Love Paul</title>
 	<style>
 		html, body {
-			background-color: #efefef
-			height: 100%
+			background-color: #efefef;
+			height: 100%;
 			width: 100%;
 		}
 		#elephant {
 			display: block;
-			margin: auto;f
 			position: relative;
 			height: 300px;
 			width: 300px;
 			transition: all 0.5s ease-in-out;
-			/*to vertically align*/
 			position: relative;
 			top: 50%;
-			-webkit-transform: translateY(-50%) rotate(0deg);
-			transform: translateY(-50%) rotate(0deg);
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%) rotate(0deg);
+			transform: translate(-50%, -50%) rotate(0deg);
 		}
 		#wrapper {
 			width:150px;
 			display:block;
 			margin:auto;
-			/*to vertically align*/
-			position: relative;
-			top: 75%;
-			-webkit-transform: translateY(-50%);
-			transform: translateY(-50%);
+			position: absolute;
+			left:0;
+			right:0;
+			bottom: 20px;
 		}
 		#counter {
 			float:left;
@@ -64,30 +62,30 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>
 		$(document).ready(function() {
-	    	var angle = 360
 	    	var counter = 0
 	    	var sound = new Audio('squeak.mp3')
 			$('#elephant').click(function() {
 				sound.play();
-				$(this).css({
-					'-webkit-transform' : 'translateY(-50%) rotate('+angle+'deg) ',
-					'transform' : 'translateY(-50%) rotate('+angle+'deg)'
-				})
-				angle += 360
 				counter += 1
-				console.log(counter);
-				$('#counter').html(counter);
+				addCSS(counter);
 			});
 			$('#button').click(function() {	
-				angle = 0
+				time = counter * 0.1
 				counter = 0
-				$('#elephant').css({
-					'-webkit-transform' : 'translateY(-50%) rotate('+angle+'deg) ',
-					'transform' : 'translateY(-50%) rotate('+angle+'deg)'
-				});
-				console.log(counter);
-				$('#counter').html(counter);
+				addCSS(counter, counter * 0.2);
 			})
+
+			function addCSS(counter, time) {
+				if (time == undefined) {
+					time = 0.5;
+				});
+				$('#elephant').css({
+					'transition' : 'all '+ time +'s ease-in-out',
+					'-webkit-transform' : 'translate(-50%, -50%) rotate('+ counter * 360 +'deg) ',
+					'transform' : 'translate(-50%, -50%) rotate('+ counter * 360 +'deg)'
+				});
+				$('#counter').html(counter);
+			}
 		});
 	</script>
 </head>
